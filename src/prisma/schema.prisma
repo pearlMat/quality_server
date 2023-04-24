@@ -36,3 +36,16 @@ model Applicant {
   experience    String
 }
 
+model Vacancy {
+  id                   Int    @id @default(autoincrement())
+  title                String
+  job_ref              String
+  location             String
+  pay_rate             String
+  work_patterns        String
+  description          String
+  driver_required      String
+  essential_experience String
+  desirable_experience String
+}
+
