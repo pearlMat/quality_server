@@ -15,6 +15,7 @@ class ContactsRoute implements Routes {
 
   private initializeRoutes() {
     this.router.get(`${this.path}`, this.contactsController.getContacts);
+    this.router.get(`${this.path}/request-callbacks`, this.contactsController.getRequestCallbacks);
     this.router.get(`${this.path}/:id(\\d+)`, this.contactsController.getContactById);
     this.router.post(`${this.path}`, validationMiddleware(CreateContactDto, 'body'), this.contactsController.createContact);
   }
