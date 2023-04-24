@@ -1,9 +1,9 @@
 import bcrypt from 'bcrypt';
 import request from 'supertest';
 import { PrismaClient, User } from '@prisma/client';
-import App from '@/app';
-import { CreateUserDto } from '@dtos/users.dto';
-import UserRoute from '@routes/users.route';
+import App from '../app';
+import { CreateUserDto } from '../dtos/users.dto';
+import UserRoute from '../routes/users.route';
 
 afterAll(async () => {
   await new Promise<void>(resolve => setTimeout(() => resolve(), 500));
