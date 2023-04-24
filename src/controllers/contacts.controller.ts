@@ -2,7 +2,6 @@ import { NextFunction, Request, Response } from 'express';
 import { Contact } from '@prisma/client';
 import { CreateContactDto } from '@dtos/contacts.dto';
 import ContactService from '@/services/contacts.service';
-//import ContactService from '@services/contacts.service';
 
 class ContactsController {
   public ContactService = new ContactService();
@@ -10,6 +9,16 @@ class ContactsController {
   public getContacts = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const findAllContactsData: Contact[] = await this.ContactService.findAllContacts();
+
+      res.status(200).json({ data: findAllContactsData, message: 'findAll' });
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  public getRequestCallbacks = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    try {
+      const findAllContactsData: Contact[] = await this.ContactService.findAllContactCallbacks();
 
       res.status(200).json({ data: findAllContactsData, message: 'findAll' });
     } catch (error) {
