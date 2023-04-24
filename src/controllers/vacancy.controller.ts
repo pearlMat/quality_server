@@ -37,6 +37,29 @@ class VacancyController {
       next(error);
     }
   };
+
+  public updateVacancy = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    try {
+      const vacancyId = Number(req.params.id);
+      const vacancyData: CreateVacancyDto = req.body;
+      const updateVacancyData: Vacancy = await this.VacancyService.updateVacancy(vacancyId, vacancyData);
+
+      res.status(200).json({ data: updateVacancyData, message: 'updated' });
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  public deleteVacancy = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    try {
+      const vacancyId = Number(req.params.id);
+      const deleteVacancyData: Vacancy = await this.VacancyService.deleteVacancy(vacancyId);
+
+      res.status(200).json({ data: deleteVacancyData, message: 'deleted' });
+    } catch (error) {
+      next(error);
+    }
+  };
 }
 
 export default VacancyController;
