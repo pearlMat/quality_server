@@ -11,6 +11,15 @@ class ContactService {
     return allContacts;
   }
 
+  public async findAllContactCallbacks(): Promise<Contact[]> {
+    const allCallbacks: Contact[] = await this.contacts.findMany({
+      where: {
+        enquiry_title: null,
+      },
+    });
+    return allCallbacks;
+  }
+
   public async findContactById(ContactId: number): Promise<Contact> {
     if (isEmpty(ContactId)) throw new HttpException(400, 'ContactId is empty');
 
