@@ -21,6 +21,6 @@ model Contact {
   email    String @unique
   enquiry_title String
   name     String
-  phone    Int
+  phone    String
   message  String
 }

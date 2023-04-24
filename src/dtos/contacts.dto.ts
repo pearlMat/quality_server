@@ -12,6 +12,6 @@ export class CreateContactDto {
   @IsString()
   public message: string;
 
-  @IsNumber()
-  public phone: number;
+  @IsString()
+  public phone: string;
 }
