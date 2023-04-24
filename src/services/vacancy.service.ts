@@ -26,6 +26,26 @@ class VacancyService {
     const createVacancyData: Vacancy = await this.vacancies.create({ data: { ...vacancyData } });
     return createVacancyData;
   }
+
+  public async updateVacancy(vacancyId: number, vacancyData: CreateVacancyDto): Promise<Vacancy> {
+    if (isEmpty(vacancyData)) throw new HttpException(400, 'vacancyData is empty');
+
+    const findVacancy: Vacancy = await this.vacancies.findUnique({ where: { id: vacancyId } });
+    if (!findVacancy) throw new HttpException(409, "User doesn't exist");
+
+    const updateVacancyData = await this.vacancies.update({ where: { id: vacancyId }, data: { ...vacancyData } });
+    return updateVacancyData;
+  }
+
+  public async deleteVacancy(vacancyId: number): Promise<Vacancy> {
+    if (isEmpty(vacancyId)) throw new HttpException(400, "Vacancy doesn't exist");
+
+    const findVacancy: Vacancy = await this.vacancies.findUnique({ where: { id: vacancyId } });
+    if (!findVacancy) throw new HttpException(409, "Vacancy doesn't exist");
+
+    const deleteVacancyData = await this.vacancies.delete({ where: { id: vacancyId } });
+    return deleteVacancyData;
+  }
 }
 
 export default VacancyService;
