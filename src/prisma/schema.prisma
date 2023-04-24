@@ -24,3 +24,15 @@ model Contact {
   phone    String
   message  String
 }
+
+model Applicant {
+  id            Int    @id @default(autoincrement())
+  title         String
+  email         String @unique
+  location      String
+  first_name    String
+  last_name     String
+  phone         String
+  experience    String
+}
+
