@@ -2,6 +2,8 @@ import { IsString } from 'class-validator';
 
 export class CreateVacancyDto {
   @IsString()
+  public title: string;
+  @IsString()
   public job_ref: string;
 
   @IsString()
